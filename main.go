@@ -1,12 +1,13 @@
 package main
 
 import (
+	"context"
 	"embed"
+
+	"example.com/backend"
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
-	"example.com/backend"
-	"context"
 )
 
 //go:embed all:frontend/dist
@@ -15,9 +16,9 @@ var assets embed.FS
 func main() {
 	// Create an instance of the app structure
 	app := NewApp()
-	test := &backend.Test{}
 
 	eventHandler := backend.NewEventHandler()
+	test := &backend.Test{EventHandler: eventHandler}
 
 	// Create application with options
 	err := wails.Run(&options.App{

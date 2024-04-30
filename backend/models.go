@@ -1,13 +1,9 @@
 package backend
 
-import(
-	"context"
-)
-
 type Test struct {
-	Name string `json:"name"`
-	Type string `json:"type"`
-	ctx  context.Context
+	Name         string `json:"name"`
+	Type         string `json:"type"`
+	EventHandler *EventHandler
 }
 
 type ChannelMessage struct {
